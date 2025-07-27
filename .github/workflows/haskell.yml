@@ -15,10 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Upgrade ghcup
+      run: ghcup upgrade
+    
+    - name: Install GHC
+      run: ghcup install ghc 9.2.8
+    
     - uses: actions/checkout@v4
     - uses: actions/setup-haskell@v1
       with:
-        ghc-version: '9.2.1'
+        ghc-version: '9.2.8'
         cabal-version: '3.2'
 
     - name: Cache
