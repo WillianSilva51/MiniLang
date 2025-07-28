@@ -22,6 +22,12 @@ module Ast
 --   * @Gt x y@: maior que
 --   * @Le x y@: menor ou igual a
 --   * @Ge x y@: maior ou igual a
+--   * @And x y@: operação bitwise AND
+--   * @Or x y@: operação bitwise OR
+--   * @Xor x y@: operação bitwise XOR
+--   * @Shl x y@: deslocamento à esquerda
+--   * @Shr x y@: deslocamento à direita
+--   * @Not x@: negação bitwise
 data Expr =
     Lit Integer
   | Add Expr Expr
@@ -41,8 +47,6 @@ data Expr =
   | Gt Expr Expr
   | Le Expr Expr
   | Ge Expr Expr
-
-  -- Bitwise operations (Not yet implemented)
   | And Expr Expr
   | Or Expr Expr
   | Xor Expr Expr

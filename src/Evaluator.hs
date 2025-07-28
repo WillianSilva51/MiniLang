@@ -7,6 +7,7 @@ module Evaluator
     ) where
 
 import Ast
+import Data.Bits (shiftL, shiftR, (.&.), (.|.), xor, complement)
 
 {-| 
 A função 'eval' avalia recursivamente expressões do tipo 'Expr', retornando um resultado 'Maybe Integer'.
@@ -132,3 +133,33 @@ eval (Ge x y) = do
     a <- eval x
     b <- eval y
     return (if a >= b then 1 else 0)
+
+-- Bitwise operations
+eval (And x y) = do
+    a <- eval x
+    b <- eval y
+    return (a .&. b)
+
+eval (Or x y) = do
+    a <- eval x
+    b <- eval y
+    return (a .|. b)
+
+eval (Xor x y) = do
+    a <- eval x
+    b <- eval y
+    return (a `xor` b)
+
+eval (Shl x y) = do
+    a <- eval x
+    b <- eval y
+    return (a `shiftL` fromIntegral b)
+
+eval (Shr x y) = do
+    a <- eval x
+    b <- eval y
+    return (a `shiftR` fromIntegral b)
+
+eval (Not x) = do
+    a <- eval x
+    return (complement a)

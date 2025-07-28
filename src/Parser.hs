@@ -67,12 +67,12 @@ pExpr = makeExprParser pTerm operatorsTable
             ],
             -- Relational operators
             [
-                InfixL (Eq <$ symbol "=="),
-                InfixL (Neq <$ symbol "!="),
-                InfixL (Lt <$ symbol "<"),
-                InfixL (Gt <$ symbol ">"),
                 InfixL (Le <$ symbol "<="),
-                InfixL (Ge <$ symbol ">=")
+                InfixL (Ge <$ symbol ">="),
+                InfixL (Eq <$ symbol "=="),
+                InfixL (Neq <$ symbol "/="),
+                InfixL (Lt <$ symbol "<"),
+                InfixL (Gt <$ symbol ">")
             ],
             -- bitwise operators
             [
